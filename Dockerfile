@@ -8,11 +8,11 @@ RUN yum -y install epel-release && \
     pip install --upgrade pip && \
     pip install paho-mqtt
 
-WORKDIR /opt/pycueserver
-
 COPY config.ini /opt/pycueserver
 COPY mqtt_preset_gw.py /opt/pycueserver
 COPY mqtt_rgb_gw.py /opt/pycueserver
+
+WORKDIR /opt/pycueserver
 
 CMD ["python", "/opt/pycueserver/mqtt_preset_gw.py"]
 
