@@ -333,17 +333,19 @@ mqtt_client = mqtt.Client()
 mqtt_client.on_connect = on_connect
 mqtt_client.on_message = on_message
 
+host = config.get('MQTT', 'host')
+port = config.getint('MQTT', 'port')
 username = config.get('MQTT', 'username')
 password = config.get('MQTT', 'password')
 
 if username and password:
     mqtt_client.username_pw_set(username, password)
 
-print "Attempting connection..."
+print "Attempting connection to " + host + ":" + str(port)
 
 mqtt_client.connect(
-    config.get('MQTT', 'host'),
-    config.getint('MQTT', 'port'),
+    host,
+    port,
     config.getint('MQTT', 'keepalive')
 )
 
