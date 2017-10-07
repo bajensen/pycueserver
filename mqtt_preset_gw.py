@@ -339,6 +339,8 @@ password = config.get('MQTT', 'password')
 if username and password:
     mqtt_client.username_pw_set(username, password)
 
+print "Attempting connection..."
+
 mqtt_client.connect(
     config.get('MQTT', 'host'),
     config.getint('MQTT', 'port'),
